@@ -1,0 +1,5 @@
+forge 'http://forge.puppetlabs.com'
+
+mod 'spantree/nginx', '0.0.7'
+mod 'spantree/java7', '0.2.0'
+mod 'rtyler/jenkins', '1.0.1'
