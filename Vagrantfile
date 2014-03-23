@@ -3,9 +3,7 @@
 Vagrant.require_version ">= 1.5.1"
 
 Vagrant.configure('2') do |config|
-  config.vm.box = 'ubuntu-12.04.4-amd64-base'
 
-  # Use this if connecting from the outside internet
   config.vm.box = "spantree/ubuntu-precise-64"
 
   config.vm.synced_folder '.', '/usr/local/src/project', :create => 'true'
