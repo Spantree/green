@@ -2,33 +2,46 @@ node default {
 
   include java7
 
-  # include jenkins
   class { 'jenkins':
-    lts                      => true,
+    lts                      => false,
     install_java             => false,
     plugin_hash              => {
-      'git'                  => { version => latest },
-      'javadoc'              => { version => latest },
-      'maven-plugin'         => { version => latest },
-      'ant'                  => { version => latest },
-      'subversion'           => { version => latest },
-      'ivy'                  => { version => latest },
-      'gradle'               => { version => latest },
-      'artifactory'          => { version => latest },
-      's3'                   => { version => latest },
-      'grails'               => { version => latest },
-      'translation'          => { version => latest },
-      'publish-over-ssh'     => { version => latest },
-      'github-api'           => { version => latest },
-      'ssh-slaves'           => { version => latest },
-      'github'               => { version => latest },
-      'email-ext'            => { version => latest },
-      'persona'              => { version => latest },
-      'confluence-publisher' => { version => latest },
-      'groovy'               => { version => latest },
-      'chucknorris'          => { version => latest },
-      'cvs'                  => { version => latest },
-      'github-oauth'         => { version => latest },
+      'ant'                  => { version => '1.2' },
+      'artifactory'          => { version => '2.2.1' },
+      'chucknorris'          => { version => '0.5' },
+      'config-file-provider' => { version => '2.7.1' },
+      'confluence-publisher' => { version => '1.8' },
+      'credentials'          => { version => '1.10' },
+      'cvs'                  => { version => '2.11' },
+      'email-ext'            => { version => '2.37.2.2' },
+      'github-api'           => { version => '1.44' },
+      'github-oauth'         => { version => '0.14' },
+      'github'               => { version => '1.8' },
+      'git'                  => { version => '2.0.4' },
+      'git-client'           => { version => '1.6.4' },
+      'gradle'               => { version => '1.23' },
+      'grails'               => { version => '1.7' },
+      'groovy'               => { version => '1.15' },
+      'ivy'                  => { version => '1.23.2' },
+      'javadoc'              => { version => '1.1' },
+      'ldap'                 => { version => '1.8' },
+      'mailer'               => { version => '1.8' },
+      'maven-plugin'         => { version => '2.0.3' },
+      'persona'              => { version => '2.4' },
+      'publish-over-ssh'     => { version => '1.11' },
+      'scm-api'              => { version => '0.2' },
+      's3'                   => { version => '0.5' },
+      'ssh-credentials'      => { version => '1.6.1' },
+      'ssh-slaves'           => { version => '1.6' },
+      'subversion'           => { version => '2.2' },
+      'translation'          => { version => '1.11' },
+      'token-macro'          => { version => '1.10' },
+    },
+    config_hash              => {
+      'JAVA_ARGS'            => {
+        'value'              =>
+          '-Djava.awt.headless=true -Djava.net.preferIPv4Stack=true -Xmx1024m'
+      },
     }
   }
 
@@ -56,3 +69,4 @@ node default {
     ensure => present,
   }
 }
+

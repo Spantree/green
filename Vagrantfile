@@ -1,14 +1,12 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
+Vagrant.require_version ">= 1.5.1"
 
 Vagrant.configure('2') do |config|
-  config.vm.box = 'base-precise-64'
-
-  # Use this if connecting locally from the Spantree network
-  # config.vm.box_url = 'http://10.0.1.54/estalk-precise-vbox-x86_64.box'
+  config.vm.box = 'ubuntu-12.04.4-amd64-base'
 
   # Use this if connecting from the outside internet
-  config.vm.box_url = 'http://files.vagrantup.com/precise64.box'
+  config.vm.box = "spantree/ubuntu-precise-64"
 
   config.vm.synced_folder '.', '/usr/local/src/project', :create => 'true'
   config.vm.synced_folder 'puppet', '/usr/local/etc/puppet', :create => 'true'
@@ -16,13 +14,14 @@ Vagrant.configure('2') do |config|
   config.vbguest.auto_update = false
   config.vbguest.no_remote = false
 
-  config.hostmanager.enabled = true
-  config.hostmanager.manage_host = true
-  config.hostmanager.ignore_private_ip = false
-  config.hostmanager.include_offline = true
+#  config.hostmanager.enabled = true
+#  config.hostmanager.manage_host = true
+#  config.hostmanager.ignore_private_ip = false
+#  config.hostmanager.include_offline = true
 
   config.vm.hostname = 'green.spantree.net'
-  config.vm.network :forwarded_port, host: 20000, guest: 80
+  config.vm.network :forwarded_port, host: 80, guest: 80
+  config.vm.network :forwarded_port, host: 8080, guest: 8080
 
   config.vm.provider :virtualbox do |v, override|
     override.vm.network :private_network, ip: '192.168.80.100'
