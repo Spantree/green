@@ -1,0 +1,97 @@
+---
+classes:
+  - java7
+  - jenkins
+  - jgoauth
+
+jgoauth::enabled: true
+jgoauth::organizationNameList: 'Spantree'
+jgoauth::adminUserNameList: 'KevinGreene,alliecurry,nemik,bechampion,divideby0,feniix,flyhighplato,uris7,mchizek'
+jgoauth::authenticatedUserReadPermission: true
+jgoauth::allowGithubWebHookPermission: true
+jgoauth::allowCcTrayPermission: true
+
+jenkins::install_java: false
+jenkins::lts: false 
+jenkins::plugin_hash:
+  'ant':
+    version: 1.2
+  'artifactory':
+    version: 2.2.1
+  'chucknorris':
+    version: 0.5
+  'config-file-provider':
+    version: 2.7.4
+  'confluence-publisher':
+    version: 1.8
+  'credentials':
+    version: 1.10
+  'cvs':
+    version: 2.11
+  'email-ext':
+    version: 2.37.2.2
+  'github-api':
+    version: 1.44
+  'github-oauth':
+    version: 0.14
+  'github':
+    version: 1.8
+  'git':
+    version: 2.2.1
+  'git-client':
+    version: 1.8.0
+  'gradle':
+    version: 1.23
+  'grails':
+    version: 1.7
+  'groovy':
+    version: 1.16
+  'ivy':
+    version: 1.23.2
+  'javadoc':
+    version: 1.1
+  'ldap':
+    version: 1.8
+  'mailer':
+    version: 1.8
+  'maven-plugin':
+    version: 2.0.3
+  'persona':
+    version: 2.4
+  'publish-over-ssh':
+    version: 1.11
+  'scm-api':
+    version: 0.2
+  's3':
+    version: 0.5
+  'ssh-credentials':
+    version: 1.6.1
+  'ssh-slaves':
+    version: 1.6
+  'subversion':
+    version: 2.2
+  'translation':
+    version: 1.11
+  'token-macro':
+    version: 1.10
+jenkins::config_hash:
+  JAVA_ARGS:
+    value: '-Djava.awt.headless=true -Djava.net.preferIPv4Stack=true -Xmx1024m'
+
+
+nginx::manage_repo: false
+
+nginx::nginx_upstreams:
+  'jenkins_real':
+    ensure: present
+    members:
+      - 'localhost:8080'
+
+nginx::nginx_vhosts:
+  'jenkins-frontend':
+    ensure: present
+    proxy: 'http://jenkins-real'
+    server_name:
+      - 'localhost'
+      - 'green.spantree.net'
+

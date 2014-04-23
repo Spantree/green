@@ -1,5 +1,8 @@
 forge 'http://forge.puppetlabs.com'
 
-mod 'spantree/nginx', '0.0.7'
+mod 'jfryman/nginx', 
+  :git => 'https://github.com/jfryman/puppet-nginx.git',
+  :ref => '5ce606cbb04b16b77c8ecf3d4a1e41b5d42cae88'
 mod 'spantree/java7', '>=0.2.2'
+mod 'spantree/jgoauth'
 mod 'rtyler/jenkins', '1.0.1'
