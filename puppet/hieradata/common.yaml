@@ -3,6 +3,7 @@ classes:
   - java7
   - jenkins
   - jgoauth
+  - nginx
 
 jgoauth::enabled: true
 jgoauth::organizationNameList: 'Spantree'
@@ -78,11 +79,11 @@ jenkins::config_hash:
   JAVA_ARGS:
     value: '-Djava.awt.headless=true -Djava.net.preferIPv4Stack=true -Xmx1024m'
 
-
+nginx::mail: false
 nginx::manage_repo: false
 
 nginx::nginx_upstreams:
-  'jenkins_real':
+  'jenkins-real':
     ensure: present
     members:
       - 'localhost:8080'
