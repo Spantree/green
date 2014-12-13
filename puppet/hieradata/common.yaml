@@ -61,6 +61,8 @@ jenkins::plugin_hash:
     version: 2.4
   'publish-over-ssh':
     version: 1.11
+  'postbuild-task':
+    version: 1.8
   'scm-api':
     version: 0.2
   's3':
